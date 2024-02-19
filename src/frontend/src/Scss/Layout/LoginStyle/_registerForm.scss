@@ -1,0 +1,297 @@
+.register-container {
+  //   background-color: lightgoldenrodyellow;
+  margin-bottom: 40vh;
+  overflow: hidden;
+
+  video {
+    display: none;
+  }
+
+  .register-section {
+    background-color: rgba(24, 24, 24, 0.7);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    height: 100%;
+
+    padding: 1em;
+    margin: 1em;
+
+    border-radius: 10px;
+
+    .register-section-heading {
+      text-align: center;
+
+      font-size: 3em;
+      color: $text-primary;
+      font-weight: bolder;
+
+      width: 100%;
+
+      margin: 5vh 0;
+
+      // background-color: lightcoral;
+    }
+  }
+
+  .switch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    box-sizing: border-box;
+
+    // background-color: lightgreen;
+    width: 100%;
+
+    padding: 1em;
+    .switch-info {
+      //   background-color: green;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+
+      color: $text-primary;
+      font-size: 1.5em;
+
+      box-sizing: border-box;
+      margin: 0 0.5em;
+    }
+  }
+
+  .account-type-info {
+    background-color: $primary-50;
+
+    color: $text-primary;
+    font-size: 1em;
+
+    width: 100%;
+
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    padding: 0.5em;
+
+    .account-type-icon {
+      height: 1em;
+      width: 1em;
+      padding: 0 0.2em;
+    }
+  }
+
+  [class^="register-form-"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    // background-color: lightblue;
+
+    width: 100%;
+  }
+
+  .form-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 5vh;
+    width: 80%;
+
+    // background-color: rgba(255, 0, 0, 0.5);
+    color: rgba(255, 0, 0, 0.5);
+
+    font-size: 1rem;
+    font-weight: bolder;
+
+    border-radius: 10px;
+
+    box-sizing: border-box;
+    margin: 0.5em;
+  }
+
+  .form-error-ph {
+    // height: 5vh;
+    // width: 80%;
+    // box-sizing: border-box;
+    // margin: 0.5em;
+    // background-color: red;
+    // border-radius: 10px;
+  }
+
+  .register-section-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    box-sizing: border-box;
+    // border: 1px green solid;
+    padding: 0.5em;
+
+    .input-error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 5vh;
+      width: 80%;
+
+      //   background-color: rgba(255, 0, 0, 0.5);
+      color: rgba(255, 0, 0, 0.5);
+
+      font-size: 1rem;
+      font-weight: bolder;
+
+      box-sizing: border-box;
+      border-radius: 10px;
+    }
+
+    .input-error-ph {
+      //   height: 5vh;
+      //   width: 100%;
+      //   box-sizing: border-box;
+      //   margin: 0.5em;
+    }
+
+    .input-field {
+      box-sizing: border-box;
+
+      width: 80%;
+      padding: 0.5em;
+      border: none;
+      border: 1px $text-primary solid;
+      border-radius: 10px;
+
+      background-color: rgba(24, 24, 24, 0.75);
+
+      color: $text-primary;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.5s;
+    }
+
+    .input-field:focus {
+      outline: none;
+      box-sizing: border-box;
+      border: 1px $button-color solid;
+      background-color: rgba(117, 75, 196, 0.5);
+    }
+
+    .select:focus {
+      background-color: $primary;
+    }
+  }
+
+  .register-section-submit {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: lightblue;
+
+    .submit-btn {
+      background-color: $primary;
+
+      color: $text-primary;
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      border: none;
+      border-radius: 10px;
+
+      width: 80%;
+
+      padding: 0.5em;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .submit-btn:hover {
+      background-color: $button-color;
+      color: $text-primary;
+      cursor: pointer;
+    }
+  }
+}
+
+.register-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+      to bottom,
+      $transparent,
+      $primary-background
+    ),
+    url("../../../assets/images/home_page_bg.png");
+  background-repeat: no-repeat;
+  filter: blur(5px);
+  background-position: 70%;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+@media (min-width: 800px) {
+  .register-container {
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-section {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .register-container {
+    // height: 65vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .register-container::before {
+    display: none;
+  }
+
+  .register-container video {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0.8;
+    mask-image: linear-gradient(to top, transparent 10%, black 75%);
+    z-index: -1;
+    filter: blur(5px);
+  }
+
+  .register-section {
+    width: 30%;
+
+    [class^="register-form-"] {
+      margin-bottom: 10vh;
+    }
+
+    .account-type-info {
+      width: 80%;
+    }
+  }
+}

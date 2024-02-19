@@ -1,0 +1,237 @@
+.hide-that {
+  display: none;
+}
+.match-list-container {
+  //   background-color: lightcoral;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+
+  .match-container {
+    background-color: $primary-background-50;
+
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid $primary;
+
+    width: 100%;
+    min-height: 22vh;
+
+    margin-bottom: 1em;
+    padding: 0.5em;
+
+    .match-basic-info {
+      display: flex;
+      flex-direction: row;
+
+      // background-color: lightgreen;
+
+      box-sizing: border-box;
+
+      width: 100%;
+      height: 5vh;
+      padding: 0.2em;
+
+      font-size: 1.2em;
+      font-weight: bold;
+
+      .match-game-mode {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // background-color: lightseagreen;
+
+        width: 25%;
+      }
+
+      .match-game-result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // background-color: lightskyblue;
+
+        width: 50%;
+
+        .game-result-win {
+          color: $primary;
+        }
+
+        .game-result-lost {
+          color: rgba(255, 0, 0, 0.5);
+        }
+      }
+
+      .match-game-time {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 0.8em;
+        font-weight: lighter;
+
+        // background-color: red;
+
+        width: 25%;
+      }
+    }
+
+    .match-summoner-info {
+      display: flex;
+      flex-direction: row;
+
+      // background-color: lightgreen;
+
+      box-sizing: border-box;
+
+      width: 100%;
+      height: 12vh;
+
+      padding: 0.2em;
+
+      .match-champion-portrait {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        // background-color: lightyellow;
+
+        box-sizing: border-box;
+
+        width: 25%;
+        height: 100%;
+
+        padding: 0.2em;
+
+        .champion-portrait-img {
+          //   width: 50%;
+          height: 100%;
+          border-radius: 10px;
+        }
+      }
+
+      .match-stats {
+        display: flex;
+        flex-direction: row;
+
+        // background-color: cornflowerblue;
+        width: 75%;
+        height: 100%;
+
+        .kda-section {
+          // background-color: chartreuse;
+          height: 100%;
+          width: 50%;
+        }
+
+        .others-section {
+          // background-color: chartreuse;
+          height: 100%;
+          width: 50%;
+        }
+
+        .stat-section {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          padding: 0.2em 0;
+          // background-color: darkcyan;
+          height: 50%;
+          width: 100%;
+
+          .stat-header {
+            color: $primary;
+            font-weight: bold;
+            margin-right: 0.2em;
+          }
+        }
+      }
+    }
+
+    .match-summoner-eq {
+      display: flex;
+      flex-direction: row;
+
+      //   background-color: royalblue;
+
+      box-sizing: border-box;
+
+      width: 100%;
+      height: 5vh;
+
+      padding: 0.2em;
+
+      .match-summoner-spells {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        // background-color: lightyellow;
+
+        width: 25%;
+        height: 100%;
+
+        .summoner-spell-img {
+          height: 100%;
+          border-radius: 10px;
+          box-sizing: border-box;
+          padding: 0.2em;
+        }
+      }
+
+      .match-summoner-items {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        // background-color: blueviolet;
+        width: 75%;
+        height: 100%;
+
+        .item {
+          height: 100%;
+
+          .item-img {
+            height: 100%;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 0.2em;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .match-list-container {
+    min-width: 60vw;
+
+    .match-container {
+      .match-summoner-info {
+        height: 14vh;
+      }
+      .match-summoner-eq {
+        height: 7vh;
+      }
+    }
+  }
+
+  .stat-section {
+    font-size: 1.5em;
+  }
+
+  .match-game-mode {
+    font-size: 1.5em;
+  }
+
+  .match-game-result {
+    font-size: 1.5em;
+  }
+}

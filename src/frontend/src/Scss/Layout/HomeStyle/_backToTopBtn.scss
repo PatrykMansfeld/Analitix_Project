@@ -1,0 +1,68 @@
+.back-to-top-btn {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.top-btn {
+  width: 100%;
+  height: 60%;
+  padding: auto;
+
+  color: $text-primary;
+  font-size: 3rem;
+  font-weight: bold;
+
+  background: none;
+
+  border: none;
+  border-top: 1px solid $primary;
+  border-bottom: 1px solid $primary;
+
+  transition: all 0.5s ease-out;
+}
+
+.top-btn:hover {
+  background: $primary;
+}
+
+// RWD
+
+// Tablet viewport
+@media (max-width: 1280) {
+}
+
+// Mobile viewport
+@media (max-width: 800px) {
+  .back-to-top-btn {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .top-btn {
+    width: 100%;
+    height: 80%;
+    padding: auto;
+
+    color: $text-primary;
+    font-size: 3rem;
+    font-weight: bold;
+
+    background: none;
+
+    border: none;
+    border-top: 1px solid $primary;
+    border-bottom: 1px solid $primary;
+
+    transition: all 0.5s ease-out;
+  }
+
+  .top-btn:hover {
+    background: $primary;
+  }
+}

@@ -1,0 +1,70 @@
+services:
+  mongo_db: #mongodb
+    container_name: analitix-mongodb-container
+    image: mongo:6.0
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Riotapi1
+    volumes:
+      - ../../api-db:/data/db #volume created on local machine to prevent data loss
+    ports:
+      - "26016:27017"
+    networks:
+      - analitix-network
+
+  analitix-api:
+    container_name: analitix-api-container
+    build:
+      context: ./src/analitix-api/
+      dockerfile: Dockerfile
+    image: analitix-api-image
+    restart: on-failure
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./src/analitix-api/.env
+    depends_on:
+      - mongo_db
+    networks:
+      - analitix-network
+
+  web-api:
+    container_name: analitix-web-api-container
+    build:
+      context: ./src/web-api/
+      dockerfile: Dockerfile
+    image: analitix-web-api-image
+    restart: on-failure
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./src/web-api/.env
+    depends_on:
+      - mongo_db
+    networks:
+      - analitix-network
+
+  web-app:
+    container_name: analitix-web-app-container
+    build:
+      context: ./src/frontend/
+      dockerfile: Dockerfile
+    image: analitix-web-app-image
+    restart: on-failure
+    ports:
+      - "80:3000"
+    env_file:
+      - ./src/frontend/.env
+    depends_on:
+      - mongo_db
+      - web-api
+      - analitix-api
+    networks:
+      - analitix-network
+    volumes:
+      - ./src/frontend/src:/usr/src/web_app/src
+
+networks:
+  analitix-network:
+    driver: bridge

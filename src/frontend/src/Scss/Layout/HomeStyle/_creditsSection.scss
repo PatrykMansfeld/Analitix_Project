@@ -1,0 +1,127 @@
+.credits-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 100vh;
+  margin-bottom: 10vh;
+}
+
+.credits-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  text-align: center;
+  color: $text-primary;
+
+  width: 100%;
+  height: 50vh;
+
+  .credits-section-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    box-sizing: border-box;
+
+    padding: 5vh;
+    background-color: $primary-background;
+
+    height: 100%;
+
+    .credits-image {
+      height: 20%;
+    }
+  }
+
+  .credits-section-image:first-child::after {
+    content: "";
+    background-color: $text-primary;
+    border-radius: 10px;
+    position: absolute;
+    top: 15%;
+    right: -5px;
+    width: 5px;
+    height: 70%;
+  }
+
+  .credits-section-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    height: 100%;
+    width: 50%;
+    position: relative;
+
+    box-sizing: border-box;
+
+    padding: 5vw;
+
+    .credits-text-title {
+      box-sizing: border-box;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1em;
+    }
+
+    .credits-text {
+      font-size: 1.5rem;
+      font-weight: 400;
+      text-align: justify;
+      color: $text-secondary;
+    }
+  }
+
+  .credits-section-image:last-child:before {
+    content: "";
+    background-color: $text-primary;
+    border-radius: 10px;
+    position: absolute;
+    top: 15%;
+    left: -5px;
+    width: 5px;
+    height: 70%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .credits-container {
+    height: 200vh;
+    overflow: hidden;
+  }
+  .credits-section {
+    flex-direction: column;
+    height: 100vh;
+
+    .credits-section-image {
+      width: 100%;
+      height: 50vh;
+    }
+
+    .credits-section-image::after {
+      display: none;
+    }
+
+    .credits-section-text {
+      width: 100%;
+      height: 50vh;
+
+      padding: 5vh;
+      margin: 5vh;
+
+      border: 1px solid $primary;
+      border-radius: 10px;
+
+      .credits-text {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

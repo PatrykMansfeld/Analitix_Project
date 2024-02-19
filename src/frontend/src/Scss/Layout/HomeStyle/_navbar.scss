@@ -1,0 +1,151 @@
+// Main navbar container
+.navbar-container {
+  box-sizing: border-box;
+  padding: 1em 3em 1em 3em;
+  background: linear-gradient(to bottom, $navbar-color, 50%, rgba(0, 0, 0, 0));
+  height: 10vh;
+}
+
+// Navbar content container
+.navbar-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// Navbar left side - logo section
+.navbar-logo-section {
+  display: flex;
+  flex-direction: row;
+
+  .navbar-logo-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+    margin-left: 10px;
+    color: $text-primary;
+    transition: all 0.5s;
+
+    .navbar-logo-links :link {
+      color: none;
+    }
+
+    .navbar-logo {
+      width: 75px;
+      height: 75px;
+      transition: all 0.5s;
+    }
+
+    .navbar-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0.5em 0px 0.5em 0px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      color: $text-primary;
+    }
+  }
+
+  // .navbar-logo-links:hover {
+  //   transform: scale(1.1);
+  // }
+}
+
+// Navbar right side - links section
+.navbar-links-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .navbar-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    .navbar-link {
+      margin: 0px 0.5em 0px 0.5em;
+      text-decoration: none;
+
+      .navbar-btn {
+        font-size: 15px;
+        padding: 1em 1.5em 1em 1.5em;
+        border-width: 0px;
+        color: $text-primary;
+        border-color: none;
+        border-radius: 10px;
+        background-color: $button-color;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+
+      .navbar-btn:hover {
+        background: $button-color-hover;
+      }
+    }
+  }
+}
+
+// RWD
+
+// Desktop viewport
+@media (max-width: 1920px) {
+  .navbar-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .navbar-logo {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+// Tablet viewport
+@media (max-width: 1280) {
+  .navbar-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .navbar-logo {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+// Mobile viewport
+@media (max-width: 800px) {
+  .navbar-container {
+    height: 20vh;
+    background: linear-gradient(
+      to bottom,
+      $primary-background,
+      50%,
+      rgba(0, 0, 0, 0)
+    );
+    padding: 0;
+    // background-color: lightblue;
+  }
+
+  .navbar-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0.5em;
+  }
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

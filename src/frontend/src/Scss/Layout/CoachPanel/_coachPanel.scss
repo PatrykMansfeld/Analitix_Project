@@ -1,0 +1,227 @@
+.coach-panel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  //   background-color: lightblue;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+  margin: 1em 0;
+  padding: 1em;
+
+  color: $text-primary;
+
+  margin-bottom: 20vh;
+
+  .coach-panel-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0.8;
+    mask-image: linear-gradient(to top, transparent 5%, black 55%);
+    z-index: -1;
+
+    .coach-panel-background-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(5px);
+    }
+  }
+
+  .coach-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    box-sizing: border-box;
+    background: $secondary-background-50;
+    border: 1px solid $secondary-background;
+    border-radius: 10px;
+
+    width: 100%;
+    height: 30vh;
+    padding: 1em;
+
+    .coach-panel-heading {
+      font-size: 1.5em;
+
+      .coach-panel-name {
+        // color: $primary-50;
+        font-weight: bold;
+      }
+    }
+    .coach-panel-team {
+      font-weight: bold;
+    }
+  }
+
+  .coach-panel-players {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    .player-info-panel {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 100%;
+      height: 15vh;
+
+      background-color: $primary-background-50;
+      border-radius: 10px;
+      box-sizing: border-box;
+
+      border: 1px solid $primary;
+
+      padding: 0.5em;
+      margin: 0.5em;
+
+      .player-info-heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 30%;
+        width: 100%;
+
+        background-color: $primary-50;
+        border-radius: 10px;
+
+        font-weight: bold;
+      }
+
+      .player-info {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        height: 100%;
+        width: 30%;
+
+        font-size: 1em;
+      }
+
+      .player-info-details {
+        width: 100%;
+        height: 70%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .player-name {
+          font-weight: bold;
+        }
+      }
+
+      .player-info-icon {
+        width: 30%;
+
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .player-icon {
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+
+      .player-info-rankeds {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        height: 100%;
+        width: 30%;
+
+        font-size: 1em;
+      }
+    }
+
+    .player-info-panel:nth-child(1) {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .coach-panel-container {
+    .coach-panel {
+      height: 20vh;
+    }
+
+    .coach-panel-background {
+      position: absolute;
+      top: -50%;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      opacity: 0.8;
+      mask-image: linear-gradient(to top, transparent 15%, black 65%);
+      z-index: -1;
+
+      .coach-panel-background-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(7px);
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .coach-panel-container {
+    flex-direction: row;
+    justify-content: space-around;
+    .coach-panel {
+      height: 20vh;
+      width: 30%;
+      background-color: $primary-background;
+      border: none;
+    }
+
+    .team-panel {
+      width: 60%;
+
+      .coach-panel-players {
+        justify-content: flex-start;
+      }
+    }
+
+    .coach-panel-background {
+      position: absolute;
+      top: -90%;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      opacity: 0.8;
+      mask-image: linear-gradient(to top, transparent 30%, black 85%);
+      z-index: -1;
+
+      .coach-panel-background-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(15px);
+      }
+    }
+  }
+}

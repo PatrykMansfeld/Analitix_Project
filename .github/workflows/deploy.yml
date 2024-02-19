@@ -1,0 +1,96 @@
+# This is workflow for analitix-api-microservice deployment to VPS
+
+name: Deploy analitix-app to VPS
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Jobs section
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+
+      - name: Stop and remove old container and image
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          script: |
+            cd /home/build/analitix-app
+            docker compose down
+            echo "Stopped Docker container"
+            docker rmi $(docker images -q -f reference='analitix*')
+            echo "Deleted Docker image"
+
+      - name: Clone repository
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          script: |
+            cd /home
+            rm -rf build
+            mkdir build
+            cd build
+            echo "Created directory structure successfully"
+            ssh -T git@github.com
+            eval `ssh-agent -s`
+            ssh-add ~/.ssh/github_ssh_key
+            ssh -T git@github.com
+            echo "Started SSH agent"
+            echo "Cloning repository..."
+            git clone git@github.com:analitix-team/analitix-app.git
+            echo "Cloned 'api-analitix' to VPS successfully"
+
+      - name: Create .env file
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          script: |
+            cd /home/build/analitix-app/src/analitix-api
+            touch .env
+            echo MONGO_URL="${{ secrets.MONGO_CONNECTION_STRING }}" >> .env
+            echo RIOT_API_KEY="${{ secrets.RIOT_API_TOKEN }}" >> .env
+            echo PORT="${{ secrets.APPLICATION_PORT }}" >> .env
+            echo "Created .env file for analitix-api"
+            cd /home/build/analitix-app/src/web-api
+            touch .env
+            echo DEV_PORT="${{ secrets.WEB_API_DEV_PORT }}" >> .env
+            echo PRD_PORT="${{ secrets.WEB_API_PRD_PORT }}" >> .env
+            echo STREAM="${{ secrets.WEB_API_STREAM }}" >> .env
+            echo MONGO_URI="${{ secrets.WEB_API_MONGO_CONNECTION_STRING }}" >> .env
+            echo ANALITIX_API_URI="${{ secrets.ANALITIX_API_CONTAINER_URI }}" >> .env
+            echo "Created .env file for web-api"
+            cd /home/build/analitix-app/src/frontend
+            touch .env
+            echo REACT_APP_DD_CDN = "${{ secrets.FRONTEND_DD_CDN_URL }}" >> .env
+            echo REACT_APP_API_URL = "${{ secrets.FRONTEND_API_URL }}" >> .env
+            echo REACT_APP_ANALITIX_API_URL = "${{ secrets.FRONTEND_ANALITIX_API_URL }}" >> .env
+            echo "Created .env file for web-api"
+
+      - name: Build and run Docker Container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          script: |
+            cd /home/build/analitix-app
+            docker compose up -d

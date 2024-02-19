@@ -1,0 +1,42 @@
+name: Test API on Pull Request
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+# Jobs section
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.12"
+
+      - name: Install dependencies
+        run: |
+          npm install ./src/analitix-api
+          npm install -g jest
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo MONGO_URL="${{ secrets.TEST_MONGO_CONNECTION_STRING }}" >> .env
+          echo RIOT_API_KEY="${{ secrets.RIOT_API_TOKEN }}" >> .env
+          echo PORT="${{ secrets.APPLICATION_PORT }}" >> .env
+          echo "Created .env file successfully"
+
+      - name: List files in the repository
+        run: |
+          ls -a ${{ github.workspace }}
+
+      - name: Run  tests
+        run: node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --runInBand --detectOpenHandles --forceExit

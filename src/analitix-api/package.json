@@ -1,0 +1,26 @@
+{
+  "name": "analitix_api",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "API for Analitix app",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll --verbose --runInBand --detectOpenHandles",
+    "start": "nodemon server.js"
+  },
+  "author": "Mateusz Blige",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jest": "^29.3.1",
+    "mongodb": "^4.9.0",
+    "mongoose": "^6.10.0",
+    "node-fetch": "^3.3.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1",
+    "winston": "^3.8.2",
+    "winston-mongodb": "^5.1.0"
+  }
+}
